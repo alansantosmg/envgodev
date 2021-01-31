@@ -35,14 +35,17 @@ Vagrant is used to provide automated creation of virtual Machine and Ansible is 
 - Setup GOPATH and GOROOT at shell Bash
 - Get and build Hugo serverless blog engine
 - Install fish shell with spacefish
+- Automated vim plugins install via Plug Manager
+- Install powerline fonts
+- Set fish as default shell for Vagrant user
 
 ### To do
 
 - Setup GOPATH and GOROOT along fish shell
-- Automated vim plugins install via Plug Manager
+
 - Automated Go-Vim tools instaled via Vim
-- Install powerline fonts
-- Set fish as default shell for Vagrant user
+
+
 - Doc Project install structions
 - Use Ansible instead shell provider
 - Setup ssh infraestructure to log
@@ -54,3 +57,8 @@ Vagrant is used to provide automated creation of virtual Machine and Ansible is 
 - Docker containers infraestructure
 - Setup VM with Ansible in Windows
 - Create Virtual Machine at AWS
+- Create menu options to set public and private network interfaces
+- Crete option to host redirection ports
+- Create menu options to set hostname
+- Create menu options to set
+- Create options to show menus in portuguese or english lang

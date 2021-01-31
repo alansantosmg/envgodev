@@ -26,7 +26,7 @@ config.vm.define "godev" do |godev|
 
   ## Select a non-used ip from your network
   ## Choose the correct real shared interface for bridge
-  godev.vm.network "public_network", ip: "192.168.0.33", bridge: "wlo1"
+  godev.vm.network "public_network", ip: "192.168.2.133", bridge: "wlo1"
 
   ## Choose the port where you run your web server and redirect to host
   godev.vm.network "forwarded_port", guest:80, host:5500
@@ -38,10 +38,12 @@ config.vm.define "godev" do |godev|
 
   ## Run vm config script to setup the environment
   godev.vm.provision "shell", path: "./config/config.sh"
-  #godev.vm.provision :reload
+ 
  
   godev.vm.provision "shell", privileged: false, path: "./config/config2.sh"
+  godev.vm.provision :reload
   godev.vm.provision "shell", privileged: false, path: "./config/config-fish.sh"
+  godev.vm.provision :reload
   end
 
 end
