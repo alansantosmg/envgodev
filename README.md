@@ -4,22 +4,20 @@ This project aim to create a default Go environment deployment for development t
 
 ## Components
 
-The environment is composed by a Linux Virtual Box machine `Debian 10 (Buster)` installed with the following config:
+The environment is composed by a Linux Virtual Box machine `Ubuntu 20.10 Groovy Gorilla 64` installed with the following config:
 
 - Lastest `Go SDK` corretly installed.
-- `Go path` and `Go root` configured along `Fish` and `Bash` shells.
+- `GOPATH` and `GOROOT` configured along `Fish` and `Bash` shells.
 - Go modules.
 - `~/src/github.com/`  dirs created at home go_user dir.
 - `Mysql` database up and running.
-- Mysql `user go_user` and `goDB database` for fast development.
-- `Vim editor` with `GruvBox Theme` and `go development plugins`.
+- `Vim editor` with `Molokai Theme` and `go development plugins`.
 - `Docker` software up and running for fast container app deployment.
 
 ## Requirements
 
-- A host machine with debian dist like: ubuntu, mint etc.
-- Virtualbox up and running.
-- Vagrant (instructions below).
+- A host machine with Virtualbox up and running.
+- Vagrant installed at host machine (instructions below).
 
 Vagrant is used to provide automated creation of virtual Machine and Ansible is required to setup the enviroment to desired state.
 
@@ -31,19 +29,37 @@ Vagrant is used to provide automated creation of virtual Machine and Ansible is 
 4. Go to project directory `cd /envgodev`.
 5. Change the ip and bridge interface editing your "Vagrantfile". Here is a example:
     `godev.vm.network "public_network", ip: "192.168.2.133", bridge: "wlo1"`
-    You need to provide a non-used ip of your local network and indicate what interface your computer are using. Above, the example shows wlo1 (wireless local 1) once the host is a laptop using only the wireless interface.
-7. Save the Vangrantfile.
-8. Run vagrant. Do  `vagrant up`.
-9. After setup completed, connect to your dev VM. At the terminal do `vagrant ssh`
-10. Open vim Editor and start programming.
-11. Check the file  `vim-go-shortcuts.md` to see what the Vim IDE and go-vim pluggin can do for you.
-12. You can save your projects at `~/src` dir.
-13. The guest machine has the hugo blog framework installed. To create a blog, just run hugo (for more information, see Hugo's project page).
-14. If you want to create go webservers, don't forget to set the port to 5500 and get the access through your host browser.
+    You need to provide a non-used ip of your local network and indicate what interface your computer are using. Above, the example shows wlo1 (wireless local 1) once the host is a laptop using only the wireless interface.   
+6. Run vagrant. Do  `vagrant up`.
+7. After setup completed, connect to your dev VM. At the terminal do `vagrant ssh`
+8. Open vim Editor and start programming
+9. The guest machine has the hugo blog framework installed. To create a blog, just run hugo (for more information, see Hugo's project page).
+10. If you want to create go webservers, don't forget to set the port to 5500 and get the access through your host browser.
 
 ## Project Status
 
 ### Changelog
+
+02/01/2021:
+
+- Setup GOPATH and GOROOT along fish shell
+- Refactoring: Modular shell structure.
+- VagrantFile shell modules. Comment/uncomment to choose which scripts run.
+- Change SO from Debian Buster to Ubuntu Groovy Gorilla 64.
+- Add script to create swap file. (Prevent compiling errors on Ubuntu Groovy)
+- Use Ansible instead shell provider.
+- Disable config share after provising.
+- New "share" host folder at /home/vangrant dir.
+- Default route added to Vangrantfile (needed to proper git clone function).
+- New cleaning shell script.
+- Optional script to add a host id_rsa.pub key (copy the key to host config folder).
+- Line added to sysctl.conf - Vscode monitoring files error.
+- Added tty -ixo to .bashrc - Prevent VIM freezes at control-s.
+- Added gcc, g++, make - Prevent errors compiling vim scripts.
+- Change VIM theme to Molokai
+- Removed non used themes from .vimrc
+- Added GOPATH to fish enviroment variables
+- Added New fish.config file
 
 01/31/2021:
 
@@ -55,7 +71,7 @@ Vagrant is used to provide automated creation of virtual Machine and Ansible is 
 - Create Debian Buster Virtual Box machine
 - Install git, curl, vim, fzf, htop
 - Disable /vagrant share
-- Enable /config share 
+- Enable /config share
 - Get and install Go SDK
 - Setup GOPATH and GOROOT at shell Bash
 - Get and build Hugo serverless blog engine
@@ -65,10 +81,10 @@ Vagrant is used to provide automated creation of virtual Machine and Ansible is 
 
 ### To do
 
+- Separate commands to disable swapfile from clean script
+- Autoload vscode server extensions at home folder
 - Create ssh-key instructions
 - Crate instrutions about vscode access from host
-- Setup GOPATH and GOROOT along fish shell
-- Use Ansible instead shell provider
 - Setup ssh infraestructure to log
 - Include instructions to log with SSH-key
 - Instructions to use with the user choosen IDE
@@ -76,10 +92,10 @@ Vagrant is used to provide automated creation of virtual Machine and Ansible is 
 - Mongodb database setup
 - Postgree database Setup
 - Docker containers infraestructure
-- Setup VM with Ansible in Windows
+- Setup VM with Ansible
 - Create Virtual Machine at AWS
 - Create menu options to set public and private network interfaces
-- Crete option to host redirection ports
+- Create option to host redirection ports
 - Create menu options to set hostname
-- Create menu options to set
-- Create options to show menus in portuguese or english lang
+- Create options to show menus in portuguese or english lang.
+  
