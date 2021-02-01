@@ -36,7 +36,7 @@ alias videos='cd ~/Videos'
 alias src='cd ~/src'
 
 ## util
-alias df='df -h 
+alias df='df -h'
 alias free='free -thw' 
 alias c='xclip'
 alias v='xclip -o'
