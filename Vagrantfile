@@ -1,7 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-
 ## vm config scripts
 $configScript = <<-SCRIPT
 SCRIPT
@@ -24,7 +23,7 @@ config.vm.define "go" do |go|
   ## Choose the correct real shared interface for bridge
   go.vm.network "public_network", ip: "192.168.2.150", bridge: "wlo1", hostname: true
 
-
+  #set default route (You need this to clone github repos)
   go.vm.provision "shell",
     run: "always",
     inline: "route add default gw 192.168.2.1"
@@ -44,8 +43,13 @@ config.vm.define "go" do |go|
   go.vm.provision "shell", path: "./config/config-ubuntuswap.sh"   
   go.vm.provision "shell", privileged: false, path: "./config/config-home.sh"
   go.vm.provision "shell", privileged: false, path: "./config/config-go.sh"
+  
+  # Comment if you don't want a Hugo Engine
   go.vm.provision "shell", privileged: false, path: "./config/config-hugo.sh"
-  go.vm.provision "shell", privileged: false, path: "./config/config-hostssh.sh"
+  
+  # uncomment if you have a id_rsa key file in the host config dir
+  #go.vm.provision "shell", privileged: false, path: "./config/config-hostssh.sh"
+  
   go.vm.provision "shell", privileged: false, path: "./config/config-vim.sh"
   go.vm.provision :reload
   go.vm.provision "shell", privileged: false, path: "./config/config-shellfish.sh"
