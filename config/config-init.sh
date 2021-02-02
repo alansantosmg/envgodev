@@ -12,7 +12,17 @@ echo "System updated"
 echo 
 
 
+echo
+# Adjust time zone
+echo "Setting time zone to São Paulo..."
+timedatectl set-timezone 'America/Sao_Paulo'
+timedatectl set-ntp yes
+timedatectl
+echo
+echo
 
+
+echo
 echo "Downloading go..."
 echo
 # Install Go SDK
