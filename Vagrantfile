@@ -51,12 +51,9 @@ config.vm.define "go" do |go|
   #go.vm.provision "shell", privileged: false, path: "./config/config-hostssh.sh"
   
   go.vm.provision "shell", privileged: false, path: "./config/config-vim.sh"
-  go.vm.provision :reload
   go.vm.provision "shell", privileged: false, path: "./config/config-shellfish.sh"
   go.vm.provision "shell", path: "./config/config-clean.sh"
-  
-  go.vm.synced_folder "./config", "/config", disabled: true 
-  go.vm.provision :reload
+ 
   end
 end
 
